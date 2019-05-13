@@ -1,30 +1,40 @@
-let post = []
-let id = 0
+let posts = [{
+  text: 'Welcome to the Chat!',
+  id: 0}]
+
 
 module.exports = {
 add: (req,res) => {
-  const {text, time} = req.body
-  post.push({id, text,})
-  id++
-  res.status(200).send(post)
+  const {text} = req.body
+  posts.length
+  ? id = posts[posts.length - 1].id +1
+  : id = 0
+  const newPost = {
+    text: text,
+    id: id
+  }
+  posts.push(newPost)
+
+  res.status(200).send(posts)
 },
 read: (req, res) => {
-  res.status(200).send(post)
+  res.status(200).send(posts)
 }, 
 update: (req, res) => {
-const {text} = req.body
-const updateId = req.params.id
-const index = post.findIndex(post => post.id === updateId)
-post[index] = {
-  id: post.id,
-  text: text || message.text,
-  }
-  res.status(200).send(post)
+  const {id} = req.params
+  const updatePost = req.body
+  console.log(updatePost)
+  var myPost = posts.find(element => {
+    return element.id === +id
+  })
+  myPost.text = updatePost.post
+  console.log(myPost)
+  res.status(200).send(posts)
+
 },
 delete: (req, res) => {
-  const deleteId = req.params.id
-  index = post.findIndex(message => message.id === deleteId)
-  post.splice(index, 1)
-  res.status(200).send(post)
+const {id} = req.params
+posts = posts.filter((posts) => posts.id !== +id)
+res.status(200).send(posts)
 }
 }
