@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
-import './displayPost.css'
+import './displayPosts.css'
 
 class DisplayPosts extends Component {
   constructor (props) {
@@ -15,7 +15,7 @@ class DisplayPosts extends Component {
     this.setState({
       edit: !this.state.edit
     })
-  }
+  } 
 
   handleInput(val){
     this.setState({editPost: val})

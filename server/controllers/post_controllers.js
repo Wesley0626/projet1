@@ -1,5 +1,5 @@
 let posts = [{
-  text: 'Welcome to the Chat!',
+  text: '',
   id: 0}]
 
 
@@ -23,12 +23,10 @@ read: (req, res) => {
 update: (req, res) => {
   const {id} = req.params
   const updatePost = req.body
-  console.log(updatePost)
   var myPost = posts.find(element => {
     return element.id === +id
   })
   myPost.text = updatePost.post
-  console.log(myPost)
   res.status(200).send(posts)
 
 },

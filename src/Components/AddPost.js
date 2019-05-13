@@ -19,7 +19,9 @@ handleText(val){
     input: val
   })
 }
-
+getPosts =() =>{
+  axios.get('/api/read')
+}
 handleGetPosts = () => {
   axios.get('/api/post')
   .then(res => {
@@ -27,6 +29,7 @@ handleGetPosts = () => {
       post: res.data
     })
   })
+  .catch(err => alert(err))
 }
 
 handleEdit = (data) => {
@@ -43,6 +46,7 @@ handleAddPost = () => {
       post: res.data
     })
   })
+  .catch(err => alert(err))
 }
 
 
